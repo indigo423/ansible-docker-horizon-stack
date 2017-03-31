@@ -3,14 +3,13 @@ services:
   minion:
     image: opennms/minion:{{ minion_image_version }}
     environment:
+      - TZ={{ timezone }}
       - MINION_ID={{ minion_id }}
       - MINION_LOCATION={{ minion_location }}
       - OPENNMS_BROKER_URL={{ opennms_broker_url }}
       - OPENNMS_HTTP_URL={{ opennms_http_url }}
       - JAVA_MIN_MEM={{ java_min_mem }}
       - JAVA_MAX_MEM={{ java_max_mem }}
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
     command: ["-f"]
     ports:
       - "{{ minion_karaf_port_export }}"

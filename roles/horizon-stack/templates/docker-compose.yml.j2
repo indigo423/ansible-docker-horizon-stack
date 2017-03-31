@@ -18,8 +18,6 @@ services:
       - database_data
     volumes_from:
       - database_data:rw
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
   opennms_data:
     image: tianon/true
     volumes:
@@ -44,7 +42,6 @@ services:
       - opennms_data:rw
     volumes:
       - {{ opennms_volume_etc }}
-      - /etc/localtime:/etc/localtime:ro
     command: ["-s"]
     ports:
       - "{{ opennms_webui_port_expose }}"

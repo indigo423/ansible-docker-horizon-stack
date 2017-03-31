@@ -5,6 +5,8 @@ working_dir: '/opt/docker/minion'
 service_name: 'minion'
 service_friendly_name: 'OpenNMS Horizon Minion {{ minion_image_version }}'
 
+timezone: 'Europe/Berlin'
+
 opennms_broker_url: 'tcp://localhost:61616'
 opennms_http_url: 'http://localhost:8980/opennms'
 java_min_mem: '256M'
