@@ -1,7 +1,7 @@
 version: '2'
 services:
   minion:
-    image: opennms/minion:{{ docker_image_version }}
+    image: opennms/minion:{{ minion_image_version }}
     environment:
       - MINION_ID={{ minion_id }}
       - MINION_LOCATION={{ minion_location }}

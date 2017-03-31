@@ -1,9 +1,9 @@
 ---
-docker_image_version: '19.0.1-1'
-service_description: 'OpenNMS Horizon Minion {{ docker_image_version }}'
+minion_image_version: '19.0.1-1'
+service_description: 'OpenNMS Horizon Minion {{ minion_image_version }}'
 working_dir: '/opt/docker/minion'
 service_name: 'minion'
-service_friendly_name: 'OpenNMS Horizon Minion {{ docker_image_version }}'
+service_friendly_name: 'OpenNMS Horizon Minion {{ minion_image_version }}'
 
 opennms_broker_url: 'tcp://localhost:61616'
 opennms_http_url: 'http://localhost:8980/opennms'
