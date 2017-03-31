@@ -3,10 +3,10 @@ opennms_image_version: '19.0.1-1'
 pris_image_version: '1.1.5'
 postgres_image_version: '9.5'
 grafana_image_version: '4.2.0'
-service_description: 'OpenNMS Horizon Application Stack {{ docker_image_version }}'
+service_description: 'OpenNMS Horizon Application Stack {{ opennms_image_version }}'
 working_dir: '/opt/docker/opennms'
 service_name: 'opennms-horizon-stack'
-service_friendly_name: 'OpenNMS Horizon Application Stack {{ docker_image_version }}'
+service_friendly_name: 'OpenNMS Horizon Application Stack {{ opennms_image_version }}'
 
 timezone: 'Europe/Berlin'
 
