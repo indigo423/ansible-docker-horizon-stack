@@ -13,7 +13,7 @@ services:
       - POSTGRES_USER={{ postgres_user }}
       - POSTGRES_PASSWORD={{ postgres_password }}
     ports:
-      - "{{ postgres_port_expose }}
+      - "{{ postgres_port_expose }}"
     depends_on:
       - database_data
     volumes_from:
