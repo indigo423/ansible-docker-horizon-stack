@@ -1,0 +1,82 @@
+version: '2'
+services:
+  database_data:
+    image: tianon/true
+    volumes:
+        - /var/lib/postgresql/data
+  database:
+    image: postgres:{{ postgres_image_version }}
+    environment:
+      - TZ={{ timezone }}
+      - POSTGRES_HOST=database
+      - POSTGRES_PORT={{ postgres_port }}
+      - POSTGRES_USER={{ postgres_user }}
+      - POSTGRES_PASSWORD={{ postgres_password }}
+    ports:
+      - "{{ postgres_port_expose }}
+    depends_on:
+      - database_data
+    volumes_from:
+      - database_data:rw
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+  opennms_data:
+    image: tianon/true
+    volumes:
+      - /opennms-data
+  opennms:
+    image: opennms/horizon-core-web:{{ opennms_image_version }}
+    environment:
+      - TZ={{ timezone }}
+      - OPENNMS_DBNAME={{ opennms_dbname }}
+      - OPENNMS_DBUSER={{ opennms_dbuser }}
+      - OPENNMS_DBPASS={{ opennms_dbpass }}
+      - OPENNMS_HOME={{ opennms_home }}
+      - OPENNMS_DB_CONFIG={{ opennms_db_config }}
+      - POSTGRES_HOST=database
+      - POSTGRES_PORT={{ postgres_port }}
+      - POSTGRES_USER={{ postgres_user }}
+      - POSTGRES_PASSWORD={{ postgres_password }}
+    depends_on:
+      - database
+      - opennms_data
+    volumes_from:
+      - opennms_data:rw
+    volumes:
+      - {{ opennms_volume_etc }}
+      - /etc/localtime:/etc/localtime:ro
+    command: ["-s"]
+    ports:
+      - "{{ opennms_webui_port_expose }}"
+      - "{{ opennms_jmx_port_expose }}"
+      - "{{ opennms_rmi_port_expose }}"
+      - "{{ opennms_karaf_port_expose }}"
+      - "{{ opennms_activemq_port_expose }}"
+      - "{{ opennms_eventd_port_expose }}"
+      - "{{ opennms_trap_port_expose }}"
+  pris:
+    image: opennms/pris:{{ pris_image_version }}
+    environment:
+      - TZ={{ timezone }}
+    volumes:
+      - {{ pris_volume_requisitions }}
+      - {{ pris_volume_scriptsteps }}
+    ports:
+      - "{{ pris_webui_port_expose }}"
+  grafana_data:
+    image: tianon/true
+    volumes:
+        - /var/lib/grafana
+        - /var/lib/grafana/plugins
+  grafana:
+    image: grafana/grafana:{{ grafana_image_version }}
+    environment:
+      - TZ={{ timezone }}
+      - GF_SERVER_ROOT_URL={{ grafana_gf_server_root_url }}
+      - GF_SECURITY_ADMIN_PASSWORD={{ grafana_security_admin_password }}
+    depends_on:
+      - grafana_data
+    volumes_from:
+      - grafana_data:rw
+    ports:
+      - "{{ grafana_webui_port_expose }}"

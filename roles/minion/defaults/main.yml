@@ -1,0 +1,16 @@
+---
+docker_image_version: '19.0.1-1'
+service_description: 'OpenNMS Horizon Minion {{ docker_image_version }}'
+working_dir: '/opt/docker/minion'
+service_name: 'minion'
+service_friendly_name: 'OpenNMS Horizon Minion {{ docker_image_version }}'
+
+opennms_broker_url: 'tcp://localhost:61616'
+opennms_http_url: 'http://localhost:8980/opennms'
+java_min_mem: '256M'
+java_max_mem: '512M'
+
+minion_karaf_port_export: '8201:8201'
+minion_jmx_port_export: '18980:18980'
+minion_trap_port_export: '162:162/udp'
+minion_syslog_port_export: '514:514/udp'

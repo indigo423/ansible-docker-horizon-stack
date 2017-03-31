@@ -1,0 +1,7 @@
+# file: production
+
+[minion]
+myMinionHost ansible_host="myMinionHostIp"
+
+[horizon-stack]
+myOpenNMSHorizonHost ansible_host="myOpenNMSHorizonHostIp"

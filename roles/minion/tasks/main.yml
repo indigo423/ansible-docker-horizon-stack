@@ -1,0 +1,14 @@
+---
+- name: Create {{ service_friendly_name }} Service Environment
+  file: path={{ working_dir }} state=directory
+
+- name: Install {{ service_friendly_name }} Service
+  template: src={{ service_name }}.service.j2 dest=/etc/systemd/system/{{ service_name }}.service
+
+- name: Ensure {{ service_friendly_name }} is enabled and started
+  systemd: daemon_reload=yes enabled=yes state=started name={{ service_name }}.service
+
+- name: Install Docker {{ service_friendly_name }}
+  template: src=docker-compose.yml.j2 dest={{ working_dir }}/docker-compose.yml
+  notify:
+    - restart {{ service_name }}

@@ -1,0 +1,12 @@
+---
+# Overwrite configurations on a host base level
+# postgres_port: 5432
+# postgres_user: postgres
+# postgres_password: postgres
+# postgres_port_expose: 5432:5432
+#
+# opennms_dbname: opennms
+# opennms_dbuser: opennms
+# opennms_dbpass: opennms
+# opennms_home: /opt/opennms
+# opennms_db_config: /opt/opennms/etc/opennms-datasources.xml
