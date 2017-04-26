@@ -1,0 +1,12 @@
+---
+pris_image_version: '1.1.5'
+service_description: 'OpenNMS Provisioning Integration Service {{ pris_image_version }}'
+working_dir: '/opt/docker/pris'
+service_name: 'opennms-pris'
+service_friendly_name: 'OpenNMS Provisioning Integration Service {{ pris_image_version }}'
+
+timezone: 'Europe/Berlin'
+
+pris_volume_requisitions: '/opt/pris-inventory/requisitions:/opt/opennms-pris/requisitions'
+pris_volume_scriptsteps: '/opt/pris-inventory/scriptsteps:/opt/opennms-pris/scriptsteps'
+pris_webui_port_expose: '8000:8000'

@@ -1,0 +1,12 @@
+version: '2'
+services:
+  pris:
+    image: opennms/pris:{{ pris_image_version }}
+    container_name: opennms-pris
+    environment:
+      - TZ={{ timezone }}
+    volumes:
+      - {{ pris_volume_requisitions }}
+      - {{ pris_volume_scriptsteps }}
+    ports:
+      - "{{ pris_webui_port_expose }}"

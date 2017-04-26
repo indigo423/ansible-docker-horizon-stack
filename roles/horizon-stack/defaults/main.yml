@@ -1,8 +1,6 @@
 ---
 opennms_image_version: '19.0.1-1'
-pris_image_version: '1.1.5'
 postgres_image_version: '9.5'
-grafana_image_version: '4.2.0'
 service_description: 'OpenNMS Horizon Application Stack {{ opennms_image_version }}'
 working_dir: '/opt/docker/opennms'
 service_name: 'opennms-horizon-stack'
@@ -22,6 +20,7 @@ opennms_home: '/opt/opennms'
 opennms_db_config: '/opt/opennms/etc/opennms-datasources.xml'
 
 opennms_volume_etc: '/opt/opennms-etc:/opt/opennms/etc'
+opennms_config_version: 'master'
 
 opennms_webui_port_expose: '8980:8980'
 opennms_jmx_port_expose: '18980:18980'
@@ -30,11 +29,3 @@ opennms_karaf_port_expose: '8101:8101'
 opennms_activemq_port_expose: '61616:61616'
 opennms_eventd_port_expose: '5817:5817'
 opennms_trap_port_expose: '162:162/udp'
-
-pris_volume_requisitions: '/opt/pris-inventory/requisitions:/opt/opennms-pris/requisitions'
-pris_volume_scriptsteps: '/opt/pris-inventory/scriptsteps:/opt/opennms-pris/scriptsteps'
-pris_webui_port_expose: '8000:8000'
-
-grafana_gf_server_root_url: 'http://grafana.acme.org'
-grafana_security_admin_password: 'myPass'
-grafana_webui_port_expose: '3000:3000'

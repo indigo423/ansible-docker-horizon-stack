@@ -1,0 +1,18 @@
+version: '2'
+volumes:
+  data-grafana:
+    driver: "local"
+services:
+  grafana:
+    image: grafana/grafana:{{ grafana_image_version }}
+    container_name: grafana
+    environment:
+      - TZ={{ timezone }}
+      - GF_SERVER_ROOT_URL={{ grafana_gf_server_root_url }}
+      - GF_SECURITY_ADMIN_PASSWORD={{ grafana_security_admin_password }}
+    volumes:
+      - data-grafana:/var/lib/grafana
+      - data-grafana:/var/log/grafana
+      - data-grafana:/etc/grafana
+    ports:
+      - "{{ grafana_webui_port_expose }}"

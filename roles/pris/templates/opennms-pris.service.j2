@@ -1,0 +1,13 @@
+[Unit]
+Description={{ service_description }}
+After=docker.service
+Requires=docker.service
+
+[Service]
+WorkingDirectory={{ working_dir }}
+ExecStartPre=-/usr/local/bin/docker-compose
+ExecStart=/usr/local/bin/docker-compose up
+ExecStop=/usr/local/bin/docker-compose stop
+
+[Install]
+WantedBy=multi-user.target
