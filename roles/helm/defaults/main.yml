@@ -1,0 +1,12 @@
+---
+helm_image_version: 'latest'
+service_description: 'Grafana {{ helm_image_version }}'
+working_dir: '/opt/docker/helm'
+service_name: 'helm'
+service_friendly_name: 'Grafana {{ helm_image_version }}'
+
+timezone: 'Europe/Berlin'
+
+grafana_gf_server_root_url: 'http://grafana.acme.org'
+grafana_security_admin_password: 'myPass'
+grafana_webui_port_expose: '3000:3000'

@@ -1,5 +1,5 @@
 ---
-pris_image_version: '1.1.5'
+pris_image_version: 'latest'
 service_description: 'OpenNMS Provisioning Integration Service {{ pris_image_version }}'
 working_dir: '/opt/docker/pris'
 service_name: 'opennms-pris'

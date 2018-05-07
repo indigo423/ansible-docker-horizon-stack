@@ -1,6 +1,6 @@
 ---
-opennms_image_version: '19.0.1-1'
-postgres_image_version: '9.5'
+opennms_image_version: 'latest'
+postgres_image_version: '9.6'
 service_description: 'OpenNMS Horizon Application Stack {{ opennms_image_version }}'
 working_dir: '/opt/docker/opennms'
 service_name: 'opennms-horizon-stack'
